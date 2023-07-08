@@ -13,3 +13,8 @@ input{
     border: none;
 
 }
+main > div{
+    margin: 5%;
+    text-align: center;
+
+}
