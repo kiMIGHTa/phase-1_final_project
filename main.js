@@ -1,6 +1,43 @@
 function fetchData() {
     fetch(`https://kimeals.onrender.com/meal_plans`)
       .then((response) => response.json())
-      .then((data) => console.log(data))
+      .then((data) => getRecipes(data))
   }
-  fetchData()
+  
+  function getRecipes(data) {
+    let result = document.getElementById('result')
+  
+    // Get user input values
+    const username = document.getElementById('username').value
+    const height = document.getElementById('heightInput').value
+    const weight = document.getElementById('weightInput').value
+    const BMI = weight / (height * height)
+  
+    // Create a user object with calculated BMI
+    let userObj = {
+      "id": 1,
+      "name": username,
+      "weight": weight,
+      "height": height,
+      "bmi": BMI
+    }
+  
+    let BMIResult = document.createElement('div')
+    result.appendChild(BMIResult)
+  
+    // Display BMI and choose recipe category based on BMI value
+    if (BMI < 18.5) {
+      BMIResult.innerHTML = `<p>Your BMI is</p><p>${BMI}</p><p>Underweight recipes</p>`
+      getUnderWeightRecipes(data)
+    } else if (BMI >= 18.5 && BMI < 25.0) {
+      BMIResult.innerHTML = `<p>Your BMI is</p><p>${BMI}</p><p>Healthy weight recipes</p>`
+      getNormalWeightRecipes(data)
+    } else if (BMI >= 25.0 && BMI < 30.0) {
+      BMIResult.innerHTML = `<p>Your BMI is</p><p>${BMI}</p><p>Overweight recipes</p>`
+      getOverWeightRecipes(data)
+    } else if (BMI > 30.0) {
+      BMIResult.innerHTML = `<p>Your BMI is</p><p>${BMI}</p><p>Obese recipes</p>`
+      getObeseRecipes(data)
+    }
+  }
+  
