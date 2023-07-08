@@ -47,3 +47,10 @@ main > div{
     padding: 10px;
     border: none;
   }
+
+  .output{
+    background-color: rgb(252,147,164);
+    border-radius: 15px;
+    border: none;
+
+  }
