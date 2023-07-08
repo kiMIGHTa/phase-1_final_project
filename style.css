@@ -40,3 +40,10 @@ main > div{
     padding: 10px;
     text-decoration: none;
   }
+
+  button{
+    border-radius: 51px;
+    background-color: rgb(207,188,181);
+    padding: 10px;
+    border: none;
+  }
