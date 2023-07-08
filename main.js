@@ -1,11 +1,6 @@
-function fetchData() {
-    fetch(`https://kimeals.onrender.com/meal_plans`)
-      .then((response) => response.json())
-      .then((data) => getRecipes(data))
-  }
-  
-  function getRecipes(data) {
+function getRecipes(data) {
     let result = document.getElementById('result')
+    result.style.display = `block`
   
     // Get user input values
     const username = document.getElementById('username').value
@@ -21,6 +16,9 @@ function fetchData() {
       "height": height,
       "bmi": BMI
     }
+  
+    // Call the changeUser function with the user object
+    changeUser(userObj)
   
     let BMIResult = document.createElement('div')
     result.appendChild(BMIResult)
@@ -40,6 +38,14 @@ function fetchData() {
       getObeseRecipes(data)
     }
   }
+  
+  //fetches recipes from database
+  function fetchData() {
+    fetch(`https://kimeals.onrender.com/meal_plans`)
+      .then((response) => response.json())
+      .then((data) => getRecipes(data))
+  }
+  
 
   function getNormalWeightRecipes(mealPlans) {
     if (mealPlans[0].category === 'Normal Weight') {
@@ -213,4 +219,21 @@ function fetchData() {
       })
     }
   }
-  
+  //updates user information in the database
+  function changeUser(userObj){
+    fetch(`https://kimeals.onrender.com/users/${userObj.id}`,{
+        method: "PATCH",
+        headers:{
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(userObj)
+    })
+    .then((response)=>response.json())
+    .then(user => console.log(user))
+
+
+}
+
+
+
+
