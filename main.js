@@ -1,3 +1,4 @@
+// function calculate BMI and selects appropriate recipes
 function getRecipes(data) {
     let result = document.getElementById('result')
     result.style.display = `block`
