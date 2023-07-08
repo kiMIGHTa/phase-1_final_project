@@ -54,3 +54,11 @@ main > div{
     border: none;
 
   }
+
+  #result{
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  }
+
+  h1{
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+  }
