@@ -24,7 +24,5 @@
 # Technologies Used
 - Front-end: HTML, CSS, JavaScript
 - Back-end: Javascript
-- Database: JSON
+- Database: JSON ("https://kimeals.onrender.com")
 
-# Liscence
-- MIT Liscence
